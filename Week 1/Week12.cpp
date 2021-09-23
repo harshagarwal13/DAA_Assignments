@@ -1,0 +1,39 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int jumpSearch(int arr[], int n, int key) {
+   int start = 0;
+   int prev=sqrt(n);
+
+   while(arr[prev]<=key && prev< n) {
+      start=prev;
+      prev+= sqrt(n);
+      if(prev> n - 1)
+        prev= n; 
+   }
+
+   for(int i = start; i<prev; i++) { 
+      if(arr[i] == key)
+         return i; 
+   }
+   return -1;
+}
+
+
+int main() {
+   int n,key, result;
+   cin>>n;    //Enter size of the array
+   int arr[n]; //create an array of size n
+    for(int i = 0; i< n; i++) {
+      cin>>arr[i];        
+   }
+   cin>>key;         
+   result =jumpSearch(arr,n,key);
+   if(result>= 0)
+      cout<<"Present: " << result+1 << endl;
+   else
+      cout<<"Not Present" << endl;
+
+cout<<"\n\n";
+return 0;
+}
